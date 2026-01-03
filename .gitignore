@@ -1,0 +1,20 @@
+# Hardware configuration (system-specific, auto-generated)
+hardware-configuration.nix
+
+# Nix build results
+result
+result-*
+
+# Backup files
+*.back
+*.bak
+*~
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
