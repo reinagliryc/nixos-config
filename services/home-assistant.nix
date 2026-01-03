@@ -37,7 +37,7 @@ services.home-assistant = {
           {
             name = "Ch Eulalie Heater Switch";
             unique_id = "ch_eulalie_heater_switch";
-            value_template = "{{ is_state('switch.ch_eulalie_heater', 'off') }}";
+            state = "{{ is_state('switch.ch_eulalie_heater', 'off') }}";
             turn_on = {
               service = "switch.turn_off";
               target.entity_id = "switch.ch_eulalie_heater";
@@ -50,7 +50,7 @@ services.home-assistant = {
           {
             name = "Ch Leonard Heater Switch";
             unique_id = "ch_leonard_heater_switch";
-            value_template = "{{ is_state('switch.ch_leonard_heater', 'off') }}";
+            state = "{{ is_state('switch.ch_leonard_heater', 'off') }}";
             turn_on = {
               service = "switch.turn_off";
               target.entity_id = "switch.ch_leonard_heater";
@@ -63,7 +63,7 @@ services.home-assistant = {
           {
             name = "Ch Parents Heater Switch";
             unique_id = "ch_parents_heater_switch";
-            value_template = "{{ is_state('switch.ch_parents_heater', 'off') }}";
+            state = "{{ is_state('switch.ch_parents_heater', 'off') }}";
             turn_on = {
               service = "switch.turn_off";
               target.entity_id = "switch.ch_parents_heater";
@@ -76,7 +76,7 @@ services.home-assistant = {
           {
             name = "Salon Heater Switch";
             unique_id = "salon_heater_switch";
-            value_template = "{{ is_state('switch.salon_heater', 'off') }}";
+            state = "{{ is_state('switch.salon_heater', 'off') }}";
             turn_on = {
               service = "switch.turn_off";
               target.entity_id = "switch.salon_heater";
@@ -89,7 +89,7 @@ services.home-assistant = {
           {
             name = "Sam Heater Switch";
             unique_id = "sam_heater_switch";
-            value_template = "{{ is_state('switch.sam_heater', 'off') }}";
+            state = "{{ is_state('switch.sam_heater', 'off') }}";
             turn_on = {
               service = "switch.turn_off";
               target.entity_id = "switch.sam_heater";
@@ -102,7 +102,7 @@ services.home-assistant = {
           {
             name = "Bureau Heater Switch";
             unique_id = "bureau_heater_switch";
-            value_template = "{{ is_state('switch.bureau_heater', 'off') }}";
+            state = "{{ is_state('switch.bureau_heater', 'off') }}";
             turn_on = {
               service = "switch.turn_off";
               target.entity_id = "switch.bureau_heater";
@@ -115,7 +115,7 @@ services.home-assistant = {
           {
             name = "Seche Serviette Switch";
             unique_id = "seche_serviette_switch";
-            value_template = "{{ is_state('switch.seche_serviette', 'off') }}";
+            state = "{{ is_state('switch.seche_serviette', 'off') }}";
             turn_on = {
               service = "switch.turn_off";
               target.entity_id = "switch.seche_serviette";
@@ -132,14 +132,14 @@ services.home-assistant = {
       {
         platform = "generic_thermostat";
         name = "ch-parents";
-	unique_id = "ch-parents-thermostat";
-	heater = "switch.ch_parents_heater_switch";
+        unique_id = "ch-parents-thermostat";
+        heater = "switch.ch_parents_heater_switch";
         target_sensor = "sensor.ch_parents_temp";
         min_temp = 15;
         max_temp = 24;
         away_temp = 15;
         home_temp = 18.3;
-	comfort_temp = 19;
+        comfort_temp = 19;
         sleep_temp = 18.3;
         ac_mode = false;
         cold_tolerance = 0;
@@ -152,14 +152,14 @@ services.home-assistant = {
       {
         platform = "generic_thermostat";
         name = "ch-eulalie";
-	unique_id = "ch-eulalie-thermostat";
+        unique_id = "ch-eulalie-thermostat";
         heater = "switch.ch_eulalie_heater_switch";
         target_sensor = "sensor.ch_eulalie_temp";
         min_temp = 15;
         max_temp = 24;
         away_temp = 15;
         home_temp = 19;
-	comfort_temp = 20;
+        comfort_temp = 20;
         sleep_temp = 18;
         ac_mode = false;
         cold_tolerance = 0;
@@ -172,14 +172,14 @@ services.home-assistant = {
       {
         platform = "generic_thermostat";
         name = "ch-leonard";
-	unique_id = "ch-leonard-thermostat";
+        unique_id = "ch-leonard-thermostat";
         heater = "switch.ch_leonard_heater_switch";
         target_sensor = "sensor.ch_leonard_temp";
         min_temp = 15;
         max_temp = 24;
         away_temp = 15;
         home_temp = 19.4;
-	comfort_temp = 20;
+        comfort_temp = 20;
         sleep_temp = 18;
         ac_mode = false;
         cold_tolerance = 0;
@@ -193,13 +193,13 @@ services.home-assistant = {
         platform = "generic_thermostat";
         name = "salon";
         unique_id = "salon-thermostat";
-	heater = "switch.salon_heater_switch";
+        heater = "switch.salon_heater_switch";
         target_sensor = "sensor.salon_temp";
         min_temp = 15;
         max_temp = 24;
         away_temp = 15;
         home_temp = 19.5;
-	comfort_temp = 20;
+        comfort_temp = 20;
         sleep_temp = 18;
         ac_mode = false;
         cold_tolerance = 0;
@@ -219,7 +219,7 @@ services.home-assistant = {
         max_temp = 24;
         away_temp = 15;
         home_temp = 19.5;
-	comfort_temp = 20;
+        comfort_temp = 20;
         sleep_temp = 18;
         ac_mode = false;
         cold_tolerance = 0;
@@ -232,14 +232,14 @@ services.home-assistant = {
       {
         platform = "generic_thermostat";
         name = "sdb";
-	unique_id = "sdb-thermostat";
+        unique_id = "sdb-thermostat";
         heater = "switch.seche_serviette_switch";
         target_sensor = "sensor.sdb_temp";
         min_temp = 15;
         max_temp = 24;
         away_temp = 15;
         home_temp = 19;
-	activity_temp = 25;
+        activity_temp = 25;
         sleep_temp = 16;
         ac_mode = false;
         cold_tolerance = 0;
@@ -252,14 +252,14 @@ services.home-assistant = {
       {
         platform = "generic_thermostat";
         name = "bureau";
-	unique_id = "bureau-thermostat"; 
+        unique_id = "bureau-thermostat"; 
         heater = "switch.bureau_heater_switch";
         target_sensor = "sensor.bureau_temp";
         min_temp = 15;
         max_temp = 24;
         away_temp = 16;
         home_temp = 19;
-	comfort_temp = 21;
+        comfort_temp = 21;
         sleep_temp = 18;
         ac_mode = false;
         cold_tolerance = 0;
@@ -274,36 +274,36 @@ services.home-assistant = {
     recorder = {
       include = {
         entities = [
-	  "sensor.index"
+          "sensor.index"
           "sensor.bureau_temp"
-	  "sensor.sam_temp"
-	  "sensor.salon_temp"
-	  "sensor.cuisine_temp"
-	  "sensor.frigo_temp"
-	  "sensor.ch_eulalie_temp"
-	  "sensor.ch_leonard_temp"
-	  "sensor.sdb_temp"
-	  "sensor.ch_parents_temp"
-	  "sensor.bureau_humidity"
-	  "sensor.sam_humidity"
-	  "sensor.salon_humidity"
-	  "sensor.cuisine_humidity"
-	  "sensor.frigo_humidity"
-	  "sensor.cuisine_humidity"
-	  "sensor.ch_eulalie_humidity"
-	  "sensor.ch_leonard_humidity"
-	  "sensor.ch_parents_humidity"
-	  "sensor.sdb_humidity"
-	  "sensor.index_cost"
-	  "climate.mill_cuisine"
-	  "climate.bureau"
-	  "climate.ch_eulalie"
-	  "climate.ch_leonard"
-	  "climate.ch_parents"
-	  "climate.salon"
-	  "climate.sam"
-	  "climate.sdb"
-	];
+          "sensor.sam_temp"
+          "sensor.salon_temp"
+          "sensor.cuisine_temp"
+          "sensor.frigo_temp"
+          "sensor.ch_eulalie_temp"
+          "sensor.ch_leonard_temp"
+          "sensor.sdb_temp"
+          "sensor.ch_parents_temp"
+          "sensor.bureau_humidity"
+          "sensor.sam_humidity"
+          "sensor.salon_humidity"
+          "sensor.cuisine_humidity"
+          "sensor.frigo_humidity"
+          "sensor.cuisine_humidity"
+          "sensor.ch_eulalie_humidity"
+          "sensor.ch_leonard_humidity"
+          "sensor.ch_parents_humidity"
+          "sensor.sdb_humidity"
+          "sensor.index_cost"
+          "climate.mill_cuisine"
+          "climate.bureau"
+          "climate.ch_eulalie"
+          "climate.ch_leonard"
+          "climate.ch_parents"
+          "climate.salon"
+          "climate.sam"
+          "climate.sdb"
+        ];
       };
     };
     timer.sdb = {
@@ -313,7 +313,7 @@ services.home-assistant = {
     };
     automation = [
       {
-	alias = "sdb-header";
+        alias = "sdb-header";
         trigger = {
           platform = "state";
           entity_id = "timer.sdb";

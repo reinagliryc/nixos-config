@@ -11,6 +11,7 @@
       ./services/photoprism.nix
       ./services/home-assistant.nix
       ./services/wireguard.nix      
+      ./omarchy-shell.nix
     ];
 
   nix.settings.trusted-users = [ "root" ];
@@ -57,8 +58,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  programs.fish.enable = true;
-  users.defaultUserShell = pkgs.fish;
 
   services.openssh = {
     enable = true;
