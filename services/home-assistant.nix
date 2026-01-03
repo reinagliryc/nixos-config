@@ -352,25 +352,13 @@ services.home-assistant = {
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "hass" ];
-    ensureUsers = 
-      [ 
+    ensureUsers =
+      [
         {
           name = "hass";
           ensureDBOwnership = true;
         }
-        {
-	  name = "grafana";
-        }
       ];
   };
-
-  services.grafana = {
-      enable = true;
-      addr = "127.0.0.1";
-      port = 3000;
-      domain = "ganier.fr";
-      rootUrl = "https://grafana.ganier.fr/"; 
-  };
-
 
 }

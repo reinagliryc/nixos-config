@@ -21,10 +21,6 @@
   services.unbound.settings.server.local-data = [ 
     "\"traefik.ganier.fr. 86400 IN A 192.168.0.254\""
     "\"hass.ganier.fr. 86400 IN A 192.168.0.254\""
-    "\"influxdb.ganier.fr. 86400 IN A 192.168.0.254\""
-    "\"node-red.ganier.fr. 86400 IN A 192.168.0.254\""
-    "\"grafana.ganier.fr. 86400 IN A 192.168.0.254\""
-    "\"nextcloud.ganier.fr. 86400 IN A 192.168.0.254\""
     "\"photoprism.ganier.fr. 86400 IN A 192.168.0.254\"" 
     "\"syncthing.ganier.fr. 86400 IN A 192.168.0.254\"" 
   ];

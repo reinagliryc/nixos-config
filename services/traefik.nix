@@ -19,7 +19,6 @@
   services.traefik.staticConfigOptions.certificatesResolvers.letsencrypt.acme.dnsChallenge.provider = "infomaniak";
   services.traefik.staticConfigOptions.certificatesResolvers.letsencrypt.acme.dnsChallenge.propagation.disableANSChecks = true;
   services.traefik.staticConfigOptions.certificatesResolvers.letsencrypt.acme.dnsChallenge.propagation.delayBeforeChecks = 180;
-  #services.traefik.staticConfigOptions.certificatesResolvers.letsencrypt.acme.dnsChallenge.delayBeforeCheck = 180;
 
   ##############################################################################
   # Dynamic config (routers, services, TLS policy)
@@ -29,8 +28,6 @@
   services.traefik.dynamicConfigOptions.http.routers.hass.service = "hass";
   services.traefik.dynamicConfigOptions.http.routers.hass.tls = { };
   services.traefik.dynamicConfigOptions.http.services.hass.loadBalancer.servers = [ { url = "http://127.0.0.1:8123/"; } ];
-  services.traefik.dynamicConfigOptions.http.middlewares.syncthing-host.headers.customRequestHeaders.Host = "127.0.0.1";
-  services.traefik.dynamicConfigOptions.http.routers.syncthing.middlewares = [ "syncthing-host" ];
 
   services.traefik.dynamicConfigOptions.http.routers.photoprism.entryPoints = [ "websecure" ];
   services.traefik.dynamicConfigOptions.http.routers.photoprism.rule = "Host(`photoprism.ganier.fr`)";
@@ -38,25 +35,26 @@
   services.traefik.dynamicConfigOptions.http.routers.photoprism.tls = { };
   services.traefik.dynamicConfigOptions.http.services.photoprism.loadBalancer.servers = [ { url = "http://127.0.0.1:2342/"; } ];
 
+  services.traefik.dynamicConfigOptions.http.middlewares.syncthing-host.headers.customRequestHeaders.Host = "127.0.0.1";
   services.traefik.dynamicConfigOptions.http.routers.syncthing.entryPoints = [ "websecure" ];
   services.traefik.dynamicConfigOptions.http.routers.syncthing.rule = "Host(`syncthing.ganier.fr`)";
   services.traefik.dynamicConfigOptions.http.routers.syncthing.service = "syncthing";
+  services.traefik.dynamicConfigOptions.http.routers.syncthing.middlewares = [ "syncthing-host" ];
   services.traefik.dynamicConfigOptions.http.routers.syncthing.tls = { };
   services.traefik.dynamicConfigOptions.http.services.syncthing.loadBalancer.servers = [ { url = "http://127.0.0.1:8384/"; } ];
 
   # Root router triggers wildcard issuance (ganier.fr + *.ganier.fr)
+  # Redirects to hass.ganier.fr
   services.traefik.dynamicConfigOptions.http.routers.root.entryPoints = [ "websecure" ];
   services.traefik.dynamicConfigOptions.http.routers.root.rule = "Host(`ganier.fr`)";
-  services.traefik.dynamicConfigOptions.http.routers.root.service = "root";
+  services.traefik.dynamicConfigOptions.http.routers.root.service = "hass";
   services.traefik.dynamicConfigOptions.http.routers.root.tls.certResolver = "letsencrypt";
   services.traefik.dynamicConfigOptions.http.routers.root.tls.domains = [ { main = "ganier.fr"; sans = [ "*.ganier.fr" ]; } ];
-  services.traefik.dynamicConfigOptions.http.services.root.loadBalancer.servers = [ { url = "http://127.0.0.1:8081/"; } ];
 
   services.traefik.dynamicConfigOptions.http.routers.dashboard.entryPoints = [ "websecure" ];
   services.traefik.dynamicConfigOptions.http.routers.dashboard.rule = "Host(`traefik.ganier.fr`)";
   services.traefik.dynamicConfigOptions.http.routers.dashboard.service = "api@internal";
   services.traefik.dynamicConfigOptions.http.routers.dashboard.tls = { };
-
 
   # TLS options (hardened)
   services.traefik.dynamicConfigOptions.tls.options.default.minVersion = "VersionTLS13";

@@ -17,22 +17,18 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  # ATI video card
 
-  #boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   boot.kernelParams = [ "amd_iommu=pt" "ivrs_ioapic[32]=00:14.0" "iommu=soft" ];
   services.xserver.videoDrivers = [ "dummy" ];
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
   hardware.graphics.enable = true;
-  #hardware.opengl.driSupport = true;
 
   networking = { 
     hostName = "nixos";
-    hostId = "3b814a1e";  
-    useDHCP = false;
+    hostId = "3b814a1e";
     interfaces."enp37s0" = {
-      useDHCP=true;
+      useDHCP = true;
     };
     defaultGateway = "192.168.0.1";
     nameservers = [ "127.0.0.1" "8.8.8.8" ];
@@ -73,7 +69,6 @@
     enable = true;
     allowedTCPPorts = [ 
       53 80 443 # traefik
-      5900
     ];
     allowedUDPPorts = [ 
       53
@@ -99,4 +94,3 @@
 
   system.stateVersion = "22.05";
 }
-
