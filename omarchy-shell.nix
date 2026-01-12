@@ -20,7 +20,7 @@
 
   # Configure bash
   programs.bash = {
-    enableCompletion = true;
+    completion.enable = true;
     
     shellInit = ''
       # History control

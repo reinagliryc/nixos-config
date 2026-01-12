@@ -54,6 +54,9 @@
     usbutils
     zellij
     claude-code
+    esphome
+    esptool
+    ghostty.terminfo
   ];
 
   nixpkgs.config.allowUnfree = true;
